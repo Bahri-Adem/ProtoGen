@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+option java_package = "proto.files";
+option java_outer_classname = "SchoolHierarchy";
+option optimize_for = SPEED;
+
+import "protogen/options.proto";
+option (protogen.enable) = true;
+
+message GrpcCourse{
+  optional string name = 1;
+  optional string code = 2;
+}
+message GrpcCourses{
+  repeated GrpcCourse course = 1;
+}
+
+message GrpcPerson{
+  optional string name = 1;
+  optional string email = 2;
+}
+message GrpcPersons{
+  repeated GrpcPerson person = 1;
+}
+
+message GrpcStudent{
+  optional string name = 1;
+  optional string email = 2;
+  optional sint32 age = 3;
+  optional float gpa = 4;
+  repeated GrpcCourse courses = 5;
+}
+message GrpcStudents{
+  repeated GrpcStudent student = 1;
+}
+
+message GrpcTeacher{
+  optional string name = 1;
+  optional string email = 2;
+  repeated GrpcCourse courses = 3;
+}
+message GrpcTeachers{
+  repeated GrpcTeacher teacher = 1;
+}
+
+message GrpcSchool{
+  optional string name = 1;
+  optional string address = 2;
+  optional string principalName = 3;
+  repeated GrpcTeacher teachers = 4;
+  repeated GrpcStudent students = 5;
+}
+message GrpcSchools{
+  repeated GrpcSchool school = 1;
+}
+
